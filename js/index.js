@@ -33,8 +33,8 @@ function calculateAll() {
   let subtotal = document.querySelectorAll(".subtotal span");
 
   subtotal.forEach((span, index) => {
-    totalPrice.innerText = Number(span.innerText) + Number(span.innerText);
-    console.log(totalPrice);
+    totalPrice.innerText = Number(totalPrice.innerText) + Number(span.innerText);
+    
   });
   // Question > Why my Total doesnt go back to zero?
 }
@@ -45,6 +45,11 @@ function removeProduct(event) {
   const target = event.currentTarget;
   console.log("The target in remove is:", target);
   //... your code goes here
+  let removeButtons = document.querySelectorAll('.btn')
+  removeButtons.addEventListener('click'  , () => {
+  let cart = document.querySelector('#cart')
+  cart.removeChild(removeButtons) 
+})
 }
 
 // ITERATION 5
