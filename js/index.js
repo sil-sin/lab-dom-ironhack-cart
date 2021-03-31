@@ -6,8 +6,11 @@ function updateSubtotal(product) {
   let quantity = product.querySelector(".quantity input");
   let price = product.querySelector(".price span");
   let subtotal = product.querySelector(".subtotal span");
-  subtotal.innerText = Number(quantity.value * price.innerText);
+  total = Number(quantity.value * price.innerText);
+  subtotal.innerText = total
+  return total
   // console.log(subtotal.innerText)
+  
 }
 
 function calculateAll() {
@@ -21,21 +24,16 @@ function calculateAll() {
 
   // ITERATION 2
   //... your code goes here
+  total = 0
   let bothProducts = document.querySelectorAll(".product");
   bothProducts.forEach((item) => {
-    updateSubtotal(item);
+   total = total + updateSubtotal(item);
   });
 
   // ITERATION 3
 
   let totalPrice = document.querySelector("#total-value span ");
-
-  let subtotal = document.querySelectorAll(".subtotal span");
-
-  subtotal.forEach((span, index) => {
-    totalPrice.innerText = Number(totalPrice.innerText) + Number(span.innerText);
-    
-  });
+         totalPrice.innerText = total
   // Question > Why my Total doesnt go back to zero?
 }
 
@@ -45,11 +43,7 @@ function removeProduct(event) {
   const target = event.currentTarget;
   console.log("The target in remove is:", target);
   //... your code goes here
-  let removeButtons = document.querySelectorAll('.btn')
-  removeButtons.addEventListener('click'  , () => {
-  let cart = document.querySelector('#cart')
-  cart.removeChild(removeButtons) 
-})
+
 }
 
 // ITERATION 5
